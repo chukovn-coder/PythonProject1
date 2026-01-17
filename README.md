@@ -118,3 +118,18 @@ print(get_date("2024-03-11T02:26:18.671407"))
 - isort
 - mypy
 - Git / GitHub
+
+## Тестирование
+
+В проекте используются модульные тесты на базе pytest.
+
+Для запуска тестов выполните команду:
+
+poetry run pytest
+
+Для проверки покрытия кода тестами:
+
+poetry run pytest --cov=src --cov-report=term --cov-report=html
+
+HTML-отчет о покрытии будет сгенерирован в папке `htmlcov`.
+
