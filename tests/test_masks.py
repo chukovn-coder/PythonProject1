@@ -1,5 +1,6 @@
 import pytest
-from src.masks import get_mask_card_number
+
+from src.masks import get_mask_account, get_mask_card_number
 
 
 # ТЕСТЫ ДЛЯ get_mask_card_number
@@ -26,23 +27,16 @@ def test_get_mask_card_number_parametrized(card_number: str, expected: str):
 
 
 def test_get_mask_card_number_empty_string():
-    from src.masks import get_mask_card_number
-
     result = get_mask_card_number("")
     assert result == " ** **** "
 
 
 def test_get_mask_card_number_without_digits():
-    from src.masks import get_mask_card_number
-
     result = get_mask_card_number("Visa Platinum")
     assert result == "Visa  P** **** inum"
 
 
 # ТЕСТЫ ДЛЯ get_mask_account
-from src.masks import get_mask_account
-
-
 def test_get_mask_account_basic():
     assert get_mask_account("73654108430135874305") == "**4305"
 
