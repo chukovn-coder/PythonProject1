@@ -17,6 +17,11 @@ isort = "^5.13.2"
 mypy = "^1.19.0"
 
 # Конфигурация black
+
+[tool.poetry.group.test.dependencies]
+pytest = "^9.0.2"
+pytest-cov = "^7.0.0"
+
 [tool.black]
 line-length = 119
 target-version = ["py310"]
