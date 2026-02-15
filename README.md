@@ -133,3 +133,65 @@ poetry run pytest --cov=src --cov-report=term --cov-report=html
 
 HTML-отчет о покрытии будет сгенерирован в папке `htmlcov`.
 
+## Модуль generators
+
+В проект добавлен модуль generators, содержащий генераторы для обработки больших объемов транзакций.
+Использование генераторов позволяет работать с данными поэтапно, без загрузки всего списка в память, что особенно важно при анализе финансовых операций.
+
+1) filter_by_currency(transactions, currency_code)
+
+Генератор, который возвращает транзакции с указанным кодом валюты.
+
+Пример использования:
+
+from src.generators import filter_by_currency
+
+usd_transactions = filter_by_currency(transactions, "USD")
+
+for transaction in usd_transactions:
+    print(transaction)
+
+2) transaction_descriptions(transactions)
+
+Генератор, возвращающий описание каждой транзакции по очереди.
+
+Пример использования:
+
+from src.generators import transaction_descriptions
+
+descriptions = transaction_descriptions(transactions)
+
+for description in descriptions:
+    print(description)
+
+3) card_number_generator(start, end)
+
+Генератор, создающий номера банковских карт в формате:
+
+XXXX XXXX XXXX XXXX
+
+
+Где X — цифра номера карты.
+
+Пример использования:
+
+from src.generators import card_number_generator
+
+for card_number in card_number_generator(1, 5):
+    print(card_number)
+
+
+Вывод:
+
+0000 0000 0000 0001
+
+0000 0000 0000 0002
+
+0000 0000 0000 0003
+
+0000 0000 0000 0004
+
+0000 0000 0000 0005
+
+
+Модуль полностью покрыт тестами. Общий процент покрытия проекта составляет 98%.
